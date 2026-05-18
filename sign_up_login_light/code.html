@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>WAGORA | Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/clash-display" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/geist-mono" rel="stylesheet"/>
+<link href="https://fonts.cdnfonts.com/css/satoshi" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f3fbf5;
+        }
+        .clash-display { font-family: 'Clash Display', sans-serif; }
+        .geist-mono { font-family: 'Geist Mono', monospace; }
+        .satoshi { font-family: 'Satoshi', sans-serif; }
+        
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3C%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .teal-focus:focus {
+            outline: none;
+            border-color: #006c4f;
+            box-shadow: 0 0 0 2px rgba(0, 108, 79, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7b2f09",
+                        "on-primary-fixed": "#002116",
+                        "on-primary-fixed-variant": "#00513b",
+                        "surface-dim": "#d4dcd6",
+                        "secondary-container": "#d5ec37",
+                        "primary-container": "#00c896",
+                        "on-surface": "#161d1a",
+                        "secondary-fixed": "#d8ee3a",
+                        "tertiary-fixed": "#ffdbce",
+                        "primary": "#006c4f",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#9a451f",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface": "#f3fbf5",
+                        "surface-container": "#e8f0e9",
+                        "surface-container-highest": "#dce4de",
+                        "outline": "#6c7a72",
+                        "on-secondary-container": "#5d6900",
+                        "surface-variant": "#dce4de",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#bbcac1",
+                        "inverse-on-surface": "#ebf3ec",
+                        "on-secondary-fixed-variant": "#424b00",
+                        "surface-bright": "#f3fbf5",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#3adfab",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#bcd215",
+                        "primary-fixed": "#60fcc6",
+                        "on-primary-container": "#004d38",
+                        "surface-container-high": "#e2eae4",
+                        "on-secondary-fixed": "#191e00",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-surface-variant": "#3c4a43",
+                        "tertiary-fixed-dim": "#ffb598",
+                        "inverse-surface": "#2a322e",
+                        "on-tertiary-container": "#762b05",
+                        "inverse-primary": "#3adfab",
+                        "secondary": "#596400",
+                        "on-background": "#161d1a",
+                        "surface-container-low": "#eef6ef",
+                        "tertiary-container": "#ff9467",
+                        "on-secondary": "#ffffff",
+                        "background": "#f3fbf5",
+                        "surface-tint": "#006c4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body": ["Public Sans"],
+                        "label": ["Public Sans"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased overflow-hidden">
+<div class="noise-overlay"></div>
+<main class="flex min-h-screen">
+<!-- Left Panel: 60% Brand Panel -->
+<section class="hidden lg:flex lg:w-3/5 bg-surface-container relative overflow-hidden p-16 flex-col justify-between">
+<!-- Background Decoration -->
+<div class="absolute inset-0 z-0 opacity-10">
+<img alt="abstract architectural patterns" class="w-full h-full object-cover grayscale" data-alt="Abstract architectural lines and geometric patterns with high contrast lighting and sharp shadows in a minimalist style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP3QcpIWDDHsJoTGJ86oMGDRWWnYPI77BgyqbjQPuKrk-Zn_V2SVcKu8dqN5XrESnomlV-wduMIHrmt6TEft2NjuO5x_KgTeGe5fcwNx0nfCKLkkQGqeVWN0AodZebUId0DlWBH4UrS61lqz82ff0nHvWXNrkGjLCD1FOxRZJxzAeck5Y4QIgm9C2nJMguLVWTGP9vsM9TxNmSo-umk8fiA4hwUdTB4qqmOEiqdVYYSvfRp8InIy7NhiqV0NjV7Zv5ARQpBis4ZJY"/>
+</div>
+<div class="relative z-10">
+<span class="clash-display text-3xl font-bold tracking-tighter text-on-surface">WAGORA</span>
+</div>
+<div class="relative z-10 max-w-xl">
+<h1 class="clash-display text-7xl font-bold tracking-tight text-primary leading-none mb-8">
+                    Seek.<br/>Engage.<br/>Secure.
+                </h1>
+<p class="satoshi text-lg text-on-surface-variant max-w-md leading-relaxed">
+                    Experience the next generation of autonomous precision in procurement and logistics management.
+                </p>
+</div>
+<div class="relative z-10 flex items-end justify-between">
+<div class="space-y-1">
+<p class="geist-mono text-xs uppercase tracking-widest text-outline">System Integrity</p>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="geist-mono text-sm font-semibold">99.98% OPERATIONAL</span>
+</div>
+</div>
+<div class="text-right">
+<p class="geist-mono text-4xl font-light text-primary">v2.0.4</p>
+</div>
+</div>
+</section>
+<!-- Right Panel: 40% Form Panel -->
+<section class="w-full lg:w-2/5 bg-surface-container-lowest flex flex-col justify-center px-8 sm:px-16 lg:px-20 py-12 relative">
+<!-- Mobile Logo Only -->
+<div class="lg:hidden absolute top-12 left-8">
+<span class="clash-display text-2xl font-bold tracking-tighter text-on-surface">WAGORA</span>
+</div>
+<div class="w-full max-w-sm mx-auto">
+<div class="mb-10">
+<h2 class="clash-display text-3xl font-bold text-on-surface mb-2">Create Account</h2>
+<p class="satoshi text-on-surface-variant">Initialize your secure workstation.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-1.5">
+<label class="satoshi text-sm font-semibold text-on-surface-variant" for="name">Full Name</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg satoshi text-on-surface placeholder:text-outline teal-focus transition-all duration-200" id="name" name="name" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-1.5">
+<label class="satoshi text-sm font-semibold text-on-surface-variant" for="email">Corporate Email</label>
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg satoshi text-on-surface placeholder:text-outline teal-focus transition-all duration-200" id="email" name="email" placeholder="name@company.com" type="email"/>
+</div>
+<div class="space-y-1.5">
+<label class="satoshi text-sm font-semibold text-on-surface-variant" for="password">Password</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-container-low border border-outline-variant rounded-lg satoshi text-on-surface placeholder:text-outline teal-focus transition-all duration-200" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<input class="w-4 h-4 rounded-sm border-outline text-primary focus:ring-primary" id="terms" type="checkbox"/>
+<label class="satoshi text-xs text-on-surface-variant" for="terms">
+                            I agree to the <a class="text-primary font-semibold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-semibold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary clash-display font-bold text-lg rounded-lg hover:bg-on-primary-container active:scale-[0.98] transition-all duration-200 shadow-lg shadow-primary/10" type="submit">
+                        Create Account
+                    </button>
+</form>
+<div class="mt-8 text-center">
+<p class="satoshi text-sm text-on-surface-variant">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:underline ml-1" href="#">Sign in</a>
+</p>
+</div>
+<!-- Footer-like Links for Auth -->
+<div class="mt-16 pt-8 border-t border-surface-container-highest flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start">
+<a class="geist-mono text-[10px] uppercase tracking-widest text-outline hover:text-primary transition-colors" href="#">Support</a>
+<a class="geist-mono text-[10px] uppercase tracking-widest text-outline hover:text-primary transition-colors" href="#">Compliance</a>
+<a class="geist-mono text-[10px] uppercase tracking-widest text-outline hover:text-primary transition-colors" href="#">Security</a>
+</div>
+</div>
+</section>
+</main>
+</body></html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wagora | Autonomous AI Sales Agent</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@700,600,500&amp;f[]=satoshi@700,500,400&amp;f[]=geist-mono@400,500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed-variant": "#7b2f09",
+                "on-primary-fixed": "#002116",
+                "on-primary-fixed-variant": "#00513b",
+                "surface-dim": "#d4dcd6",
+                "secondary-container": "#d5ec37",
+                "primary-container": "#00c896",
+                "on-surface": "#161d1a",
+                "secondary-fixed": "#d8ee3a",
+                "tertiary-fixed": "#ffdbce",
+                "primary": "#006c4f",
+                "on-tertiary": "#ffffff",
+                "tertiary": "#9a451f",
+                "error-container": "#ffdad6",
+                "error": "#ba1a1a",
+                "surface": "#f3fbf5",
+                "surface-container": "#e8f0e9",
+                "surface-container-highest": "#dce4de",
+                "outline": "#6c7a72",
+                "on-secondary-container": "#5d6900",
+                "surface-variant": "#dce4de",
+                "on-primary": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "outline-variant": "#bbcac1",
+                "inverse-on-surface": "#ebf3ec",
+                "on-secondary-fixed-variant": "#424b00",
+                "surface-bright": "#f3fbf5",
+                "on-error": "#ffffff",
+                "primary-fixed-dim": "#3adfab",
+                "on-error-container": "#93000a",
+                "secondary-fixed-dim": "#bcd215",
+                "primary-fixed": "#60fcc6",
+                "on-primary-container": "#004d38",
+                "surface-container-high": "#e2eae4",
+                "on-secondary-fixed": "#191e00",
+                "on-tertiary-fixed": "#370e00",
+                "on-surface-variant": "#3c4a43",
+                "tertiary-fixed-dim": "#ffb598",
+                "inverse-surface": "#2a322e",
+                "on-tertiary-container": "#762b05",
+                "inverse-primary": "#3adfab",
+                "secondary": "#596400",
+                "on-background": "#161d1a",
+                "surface-container-low": "#eef6ef",
+                "tertiary-container": "#ff9467",
+                "on-secondary": "#ffffff",
+                "background": "#f3fbf5",
+                "surface-tint": "#006c4f"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "fontFamily": {
+                "headline": ["Public Sans"],
+                "display": ["Public Sans"],
+                "body": ["Public Sans"],
+                "label": ["Public Sans"],
+                "clash": ["Clash Display", "sans-serif"],
+                "satoshi": ["Satoshi", "sans-serif"],
+                "mono": ["Geist Mono", "monospace"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.04;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .border-default { border-color: #6c7a72; border-width: 1px; }
+        .hero-gradient {
+            background: radial-gradient(circle at top, rgba(0, 108, 79, 0.05) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<div class="grain-overlay"></div>
+<!-- Navigation (TopAppBar) -->
+<header class="sticky top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-12 h-20">
+<div class="font-['Clash_Display'] text-2xl font-bold tracking-tighter text-slate-900 dark:text-slate-50">WAGORA</div>
+<nav class="hidden md:flex gap-10 font-['Satoshi'] text-sm font-semibold">
+<a class="text-teal-500 dark:text-teal-400 border-b-2 border-teal-500" href="#">How It Works</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-teal-500 dark:hover:text-teal-300 transition-colors duration-200" href="#">Pricing</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-teal-500 dark:hover:text-teal-300 transition-colors duration-200" href="#">About</a>
+</nav>
+<div class="flex items-center gap-6 font-['Satoshi'] text-sm font-semibold">
+<button class="text-slate-600 dark:text-slate-400 hover:text-teal-500 transition-all">Sign In</button>
+<button class="bg-primary text-white px-6 py-2.5 rounded-lg font-bold hover:scale-95 transition-all">Start Free</button>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-24 px-6 hero-gradient overflow-hidden">
+<div class="max-w-4xl mx-auto text-center">
+<span class="font-mono text-xs font-bold tracking-[0.2em] text-primary uppercase mb-6 block">YOUR AUTONOMOUS AI SALES AGENT</span>
+<h1 class="font-clash text-6xl md:text-8xl font-bold leading-[1.05] tracking-tight text-on-surface mb-8">
+                    Your next client is already online. Wagora will go get them.
+                </h1>
+<p class="font-satoshi text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Wagora autonomously monitors the web, identifies high-intent leads, and initiates conversations. No scripts, no humans, just pure revenue.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-6 mb-20">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition-all">Start For Free</button>
+<button class="border border-outline text-on-surface px-8 py-4 rounded-lg font-bold text-lg hover:bg-surface-container transition-all flex items-center gap-2">
+                        See how it works <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Logo Cloud -->
+<div class="pt-12 border-t border-outline-variant/30">
+<p class="font-mono text-[10px] uppercase tracking-widest text-outline mb-10">TRUSTED BY AUTONOMOUS TEAMS</p>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale">
+<img class="h-6" data-alt="minimalist grayscale geometric tech logo design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk0EkFPnbvV5phIdE4DFBGeLFDfk7rnoCPNJG6TFwl3_wO3TUJwEMx9UvsPfLvksTH7xXCOwTT2sLeYsdhuNy-KilUIKtqFs_bvIY_KZ4CGZ5J9qFASaXvoDtdvGgTPKHQbYlbkuF86m1nJwC6LTNjnA2aZgz962wQ9WVvw3JeWv3Yttxj9D-9k1qwV3ndQgrPFg94slyWVHp1XOE0wfUDW_-H8hjXF1D6hRn_moZTopI74tfV26epC2NuCfAE16XP30BwOLUVkLo"/>
+<img class="h-7" data-alt="modern tech company wordmark in monochrome typography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNDG1sSiVsQcNlr-4D2_7rC-0oQ6OYWuFdlJRFaC17O_HzQx823S1kCKQiiQWisovJv6IlsrDnzNs5b9selcLoheW890MkwqHhpJxsb4K3N2izOjC2NgZK_UeeyW1boxVs7ej-dUalY3egosuiS05DizFqvjSTVtl9nkW8mtTJmmgfLOZml3KP_hNxGYfizaOLpMLVnwa_N4bNkoNODhZ48OyQv4jKmmWQVtlATHCx-BrhtLAPDj5CESeP_FGJXV5o25749eRaxMk"/>
+<img class="h-6" data-alt="abstract vector logo symbol for a futuristic software startup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGnFA9SmqVXEeZ3wYtmCkxgsqhgi_5bhvqpW67gUjFzGec0fWT0EzvvApJ1AB2KZrJLSeU4qfJBxVg8PkejOvKLlzEwO7AhOEGtsNyw_TNJKa6EUcUzj9EKN87QdLk4gHAjFajTbAjZ1gVr8tr36W6DgWOb2lEoHpyPRziIWYYvD5CszTCa0clw66E2hfUJUX1n6GEXO7npKP2AmI0Y5uu0Tvp_026cuh03dcDOQ8uV7eliQrspHPYjvcsiIFT59VTEgPhXz0se0w"/>
+<img class="h-8" data-alt="clean sans-serif enterprise branding logo in light gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh0zh51bk3_RbLzw8XhmsCCEk-4azYl0ynaky5oxSeUJDrGxwHF3Zmb8enf1sMcclHymTbQJ2c7ZcPE7UcONKk62rOJHWbITQACqz1_NPtHQa6wy9DsCAsXtSllF-OmYD1b52fNj3kSzyPdDLdCq3JXSb-5HW0nFlKtMK33rhd45YZjH2xlkaDl3c6QsCTGbtGy388y3xGhy_rrushwOADXXPQk5zrjT12udsBaGcydRefCTi1zp-wDnjb183vRqBOS7-yDbP6dM8"/>
+<img class="h-7" data-alt="architectural minimal logo for venture capital firm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAR75SMjZLD8ZWn3KINkoJMnV-vq386_9FBqREx63DbmYEfk8pm1r1tD03BzAB4iq17p25cVGJ9HKSAJFEYm-IPRLAy4bbDXc2hN-9q3NupyRCkpE1b9FgMU3LoYAZ87QJkS2rQT0Z7LiiyVSLbUCFB8Lszzycb5QyRKw0Swn6eKo8MEN2gGoMH5VAvSbYC0msZNEe4iDGAqkVbzLQh6ihBktFntwJeKJKD7Bag5PrYp8h0Ca3qMQxAf7SvdMQ5gkq56M0zaPrKjo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-[680px] mx-auto px-6 text-center">
+<h2 class="font-clash text-4xl font-bold text-on-surface mb-8">Great work doesn't sell itself.</h2>
+<p class="font-satoshi text-lg text-on-surface-variant leading-relaxed">
+                    You built something incredible, but the market is loud. Spending 40% of your time on cold outreach isn't sustainable. Wagora reclaims your focus by turning the internet into your passive sales funnel.
+                </p>
+</div>
+</section>
+<!-- How It Works -->
+<section class="py-32 px-6 max-w-7xl mx-auto">
+<div class="mb-20">
+<h2 class="font-clash text-5xl font-bold mb-4">Autonomous Pipeline</h2>
+<p class="font-satoshi text-on-surface-variant">Four steps to absolute market dominance.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Step 1 -->
+<div class="p-10 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors">
+<div class="font-mono text-3xl font-bold text-primary bg-primary-container/10 w-16 h-16 flex items-center justify-center rounded-lg mb-8">01</div>
+<h3 class="font-clash text-2xl font-bold mb-4">Find</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">AI scanners monitor LinkedIn, Twitter, and niche forums for intent signals.</p>
+</div>
+<!-- Step 2 -->
+<div class="p-10 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors">
+<div class="font-mono text-3xl font-bold text-primary bg-primary-container/10 w-16 h-16 flex items-center justify-center rounded-lg mb-8">02</div>
+<h3 class="font-clash text-2xl font-bold mb-4">Reach</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Wagora drafts and sends hyper-personalized messages based on lead activity.</p>
+</div>
+<!-- Step 3 -->
+<div class="p-10 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors">
+<div class="font-mono text-3xl font-bold text-primary bg-primary-container/10 w-16 h-16 flex items-center justify-center rounded-lg mb-8">03</div>
+<h3 class="font-clash text-2xl font-bold mb-4">Close</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Our agent handles objections and directs prospects to your booking link.</p>
+</div>
+<!-- Step 4 -->
+<div class="p-10 bg-surface-container-lowest border border-outline-variant hover:border-primary transition-colors">
+<div class="font-mono text-3xl font-bold text-primary bg-primary-container/10 w-16 h-16 flex items-center justify-center rounded-lg mb-8">04</div>
+<h3 class="font-clash text-2xl font-bold mb-4">Notify</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">You get a Slack notification when a new meeting is on your calendar.</p>
+</div>
+</div>
+</section>
+<!-- Differentiator -->
+<section class="py-24 bg-surface-container-highest">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center items-center">
+<div>
+<div class="font-mono text-6xl font-bold text-on-surface mb-2">1,200%</div>
+<p class="text-sm font-mono uppercase tracking-widest text-outline">ROI vs SDR Hires</p>
+</div>
+<div class="bg-secondary-container p-8 rounded-xl border border-secondary">
+<div class="font-mono text-6xl font-bold text-on-secondary-container mb-2">0</div>
+<p class="text-sm font-mono uppercase tracking-widest text-on-secondary-container font-bold">SALES REPS NEEDED</p>
+</div>
+<div>
+<div class="font-mono text-6xl font-bold text-on-surface mb-2">24/7</div>
+<p class="text-sm font-mono uppercase tracking-widest text-outline">Active Scanning</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Features (Alternating) -->
+<section class="py-32 space-y-32">
+<!-- Feature 1 -->
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-20">
+<div>
+<h3 class="font-clash text-4xl font-bold mb-6">High-Intent Discovery</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">Wagora doesn't just scrape lists. It listens for context—like a founder complaining about their current stack or a manager asking for recommendations.</p>
+<div class="w-12 h-1 bg-primary"></div>
+</div>
+<div class="bg-surface-container p-4 border border-outline-variant">
+<div class="aspect-video bg-white flex items-center justify-center">
+<div class="space-y-4 w-full px-12">
+<div class="h-2 bg-primary-container/20 w-3/4 rounded"></div>
+<div class="h-2 bg-primary-container/20 w-1/2 rounded"></div>
+<div class="h-2 bg-primary-container/20 w-full rounded"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 items-center gap-20">
+<div class="order-2 md:order-1 bg-surface-container p-4 border border-outline-variant">
+<div class="aspect-video bg-white relative overflow-hidden">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-32 h-32 rounded-full border-4 border-dashed border-primary/30 animate-spin-slow"></div>
+<div class="absolute w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<h3 class="font-clash text-4xl font-bold mb-6">Cognitive Response Engine</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">Our LLM is trained on thousands of winning sales scripts, ensuring every response feels professional, human, and goal-oriented.</p>
+<div class="w-12 h-1 bg-primary"></div>
+</div>
+</div>
+</section>
+<!-- Who it's for -->
+<section class="py-32 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-8">
+<div class="p-12 border-t-4 border-primary bg-surface-container-lowest border border-outline-variant">
+<h4 class="font-clash text-3xl font-bold mb-6">Agency Owners</h4>
+<p class="text-on-surface-variant mb-8">Scale your client acquisition without scaling your payroll. Wagora acts as your 24/7 biz-dev partner.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-sm font-medium"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Unlimited seat capacity</li>
+<li class="flex items-center gap-3 text-sm font-medium"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> White-label reporting</li>
+</ul>
+</div>
+<div class="p-12 border-t-4 border-primary bg-surface-container-lowest border border-outline-variant">
+<h4 class="font-clash text-3xl font-bold mb-6">Solo Founders</h4>
+<p class="text-on-surface-variant mb-8">Focus on building. Let Wagora handle the "boring" part of growth so you can ship faster.</p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-sm font-medium"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Rapid setup in 5 mins</li>
+<li class="flex items-center gap-3 text-sm font-medium"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Zero-commission lead gen</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Setup Section -->
+<section class="py-32 border-y border-outline-variant">
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24">
+<div>
+<h2 class="font-clash text-5xl font-bold mb-12">The Old Way vs. The Wagora Way</h2>
+<div class="space-y-12">
+<div class="opacity-40">
+<h5 class="font-mono text-xs uppercase tracking-widest mb-4">MANUAL OUTREACH</h5>
+<p class="font-satoshi text-sm italic">"I spend 3 hours a day scraping LinkedIn, another 2 hours writing emails, and most go unread. It's soul-crushing work that keeps me from the actual product."</p>
+</div>
+<div>
+<h5 class="font-mono text-xs uppercase tracking-widest mb-4 text-primary">AI PROMPT CONTROL</h5>
+<p class="font-satoshi text-lg font-medium leading-relaxed">"Set my target criteria, define my brand voice, and hit play. Wagora found 14 qualified leads in my sleep and booked 3 demos by breakfast."</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container h-full min-h-[400px] border border-outline-variant flex items-center justify-center p-12">
+<div class="w-full bg-white border border-outline-variant p-6 rounded shadow-sm">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+</div>
+<div class="font-mono text-xs text-on-surface-variant space-y-2">
+<p class="text-primary font-bold">&gt; Scanning LinkedIn for "SaaS Founder" + "Growth Pain"</p>
+<p>&gt; Lead Found: Alexander P. (San Francisco)</p>
+<p>&gt; Analysis: Mentioned scaling issues on Twitter 4h ago.</p>
+<p class="text-primary-container font-bold">&gt; Drafted personalized pitch. Sending via DM...</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing -->
+<section class="py-32 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-clash text-5xl font-bold mb-4">Simple, transparent pricing.</h2>
+<p class="text-on-surface-variant">Choose the plan that fits your growth stage.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Pricing Card 1 -->
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<h4 class="font-clash text-xl font-bold mb-2">Sandbox</h4>
+<div class="font-mono text-3xl font-bold mb-6">$0<span class="text-sm font-normal text-outline">/mo</span></div>
+<ul class="text-sm space-y-4 mb-8">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> 5 Leads / Month</li>
+<li class="flex items-center gap-2 text-outline"><span class="material-symbols-outlined text-xs">close</span> CRM Integration</li>
+</ul>
+<button class="w-full py-3 border border-outline font-bold rounded hover:bg-surface-container transition-all">Get Started</button>
+</div>
+<!-- Pricing Card 2 (Popular) -->
+<div class="p-8 border-2 border-primary bg-surface-container-lowest relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-secondary-container text-on-secondary-container text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-full">MOST POPULAR</div>
+<h4 class="font-clash text-xl font-bold mb-2">Starter</h4>
+<div class="font-mono text-3xl font-bold mb-6">$49<span class="text-sm font-normal text-outline">/mo</span></div>
+<ul class="text-sm space-y-4 mb-8">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-xs">check</span> 50 Leads / Month</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-xs">check</span> Direct DMs</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-xs">check</span> Slack Integration</li>
+</ul>
+<button class="w-full py-3 bg-primary text-on-primary font-bold rounded hover:opacity-90 transition-all">Start 14-Day Trial</button>
+</div>
+<!-- Pricing Card 3 -->
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<h4 class="font-clash text-xl font-bold mb-2">Scale</h4>
+<div class="font-mono text-3xl font-bold mb-6">$199<span class="text-sm font-normal text-outline">/mo</span></div>
+<ul class="text-sm space-y-4 mb-8">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> 500 Leads / Month</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> Multi-channel Sync</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> Advanced Analytics</li>
+</ul>
+<button class="w-full py-3 border border-outline font-bold rounded hover:bg-surface-container transition-all">Go Scale</button>
+</div>
+<!-- Pricing Card 4 -->
+<div class="p-8 border border-outline-variant bg-surface-container-lowest">
+<h4 class="font-clash text-xl font-bold mb-2">Enterprise</h4>
+<div class="font-mono text-3xl font-bold mb-6">Custom</div>
+<ul class="text-sm space-y-4 mb-8">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> Unlimited Leads</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-xs">check</span> Dedicated Success Manager</li>
+</ul>
+<button class="w-full py-3 border border-outline font-bold rounded hover:bg-surface-container transition-all">Contact Sales</button>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-32 bg-surface-container-low">
+<div class="max-w-3xl mx-auto px-6">
+<h2 class="font-clash text-4xl font-bold text-center mb-16">Frequently Asked</h2>
+<div class="space-y-4">
+<div class="bg-white p-6 border border-outline-variant">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Is this just another spam tool?</span>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+<div class="bg-white p-6 border border-outline-variant">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Does it integrate with my CRM?</span>
+<span class="material-symbols-outlined text-primary">add</span>
+</div>
+</div>
+<div class="bg-white p-6 border border-outline-variant">
+<div class="flex justify-between items-center cursor-pointer">
+<span class="font-bold">Can I customize the brand voice?</span>
+<span class="material-symbols-outlined text-primary">remove</span>
+</div>
+<p class="mt-4 text-on-surface-variant text-sm leading-relaxed">Absolutely. You can upload previous winning emails or brand guidelines, and our AI will mirror your tone perfectly.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 px-6 text-center">
+<div class="max-w-5xl mx-auto bg-primary py-24 px-12 rounded-2xl relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 grain-overlay"></div>
+<h2 class="font-clash text-5xl md:text-7xl font-bold text-on-primary mb-12 leading-tight">Ready to let AI handle your pipeline?</h2>
+<button class="bg-secondary-container text-on-secondary-container px-12 py-6 rounded-lg font-bold text-2xl hover:scale-105 transition-all">Start Your Free Agent Now</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-12 py-16 grid grid-cols-2 md:grid-cols-4 gap-12">
+<div class="col-span-2 md:col-span-1">
+<div class="font-['Clash_Display'] text-lg font-bold text-slate-900 dark:text-slate-50 mb-6 uppercase tracking-tighter">WAGORA</div>
+<p class="font-['Satoshi'] text-sm text-slate-500 dark:text-slate-400 mb-8 max-w-xs">
+                    Autonomous sales for the next generation of founders and agencies.
+                </p>
+<div class="text-slate-500 dark:text-slate-400 text-xs">
+                    © 2024 Wagora. Built by Fortex Forge.
+                </div>
+</div>
+<div>
+<h5 class="font-['Satoshi'] font-bold text-slate-900 dark:text-slate-50 mb-6">Solutions</h5>
+<ul class="space-y-4 font-['Satoshi'] text-sm">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Find</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Reach</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Pricing</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-['Satoshi'] font-bold text-slate-900 dark:text-slate-50 mb-6">Company</h5>
+<ul class="space-y-4 font-['Satoshi'] text-sm">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">About</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Careers</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-['Satoshi'] font-bold text-slate-900 dark:text-slate-50 mb-6">Support</h5>
+<ul class="space-y-4 font-['Satoshi'] text-sm">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Documentation</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Support</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-teal-500 transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

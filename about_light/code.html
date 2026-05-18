@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Mock font replacement for Satoshi and Clash Display using Public Sans as per theme config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary-fixed-variant": "#7b2f09",
+                  "on-primary-fixed": "#002116",
+                  "on-primary-fixed-variant": "#00513b",
+                  "surface-dim": "#d4dcd6",
+                  "secondary-container": "#d5ec37",
+                  "primary-container": "#00c896",
+                  "on-surface": "#161d1a",
+                  "secondary-fixed": "#d8ee3a",
+                  "tertiary-fixed": "#ffdbce",
+                  "primary": "#006c4f",
+                  "on-tertiary": "#ffffff",
+                  "tertiary": "#9a451f",
+                  "error-container": "#ffdad6",
+                  "error": "#ba1a1a",
+                  "surface": "#f3fbf5",
+                  "surface-container": "#e8f0e9",
+                  "surface-container-highest": "#dce4de",
+                  "outline": "#6c7a72",
+                  "on-secondary-container": "#5d6900",
+                  "surface-variant": "#dce4de",
+                  "on-primary": "#ffffff",
+                  "surface-container-lowest": "#ffffff",
+                  "outline-variant": "#bbcac1",
+                  "inverse-on-surface": "#ebf3ec",
+                  "on-secondary-fixed-variant": "#424b00",
+                  "surface-bright": "#f3fbf5",
+                  "on-error": "#ffffff",
+                  "primary-fixed-dim": "#3adfab",
+                  "on-error-container": "#93000a",
+                  "secondary-fixed-dim": "#bcd215",
+                  "primary-fixed": "#60fcc6",
+                  "on-primary-container": "#004d38",
+                  "surface-container-high": "#e2eae4",
+                  "on-secondary-fixed": "#191e00",
+                  "on-tertiary-fixed": "#370e00",
+                  "on-surface-variant": "#3c4a43",
+                  "tertiary-fixed-dim": "#ffb598",
+                  "inverse-surface": "#2a322e",
+                  "on-tertiary-container": "#762b05",
+                  "inverse-primary": "#3adfab",
+                  "secondary": "#596400",
+                  "on-background": "#161d1a",
+                  "surface-container-low": "#eef6ef",
+                  "tertiary-container": "#ff9467",
+                  "on-secondary": "#ffffff",
+                  "background": "#f3fbf5",
+                  "surface-tint": "#006c4f"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "fontFamily": {
+                  "headline": ["Public Sans", "sans-serif"],
+                  "display": ["Public Sans", "sans-serif"],
+                  "body": ["Public Sans", "sans-serif"],
+                  "label": ["Public Sans", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .film-grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    .clash-display { font-family: 'Public Sans', sans-serif; font-weight: 800; letter-spacing: -0.05em; }
+    .satoshi { font-family: 'Public Sans', sans-serif; font-weight: 400; }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body antialiased">
+<div class="film-grain"></div>
+<!-- TopAppBar Component -->
+<header class="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-12 h-20">
+<div class="flex items-center gap-8">
+<span class="font-['Public_Sans'] text-2xl font-bold tracking-tighter text-slate-900">WAGORA</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-['Public_Sans'] text-sm font-semibold text-slate-600 hover:text-teal-500 transition-colors duration-200" href="#">How It Works</a>
+<a class="font-['Public_Sans'] text-sm font-semibold text-slate-600 hover:text-teal-500 transition-colors duration-200" href="#">Pricing</a>
+<a class="font-['Public_Sans'] text-sm font-semibold text-teal-500 border-b-2 border-teal-500 transition-colors duration-200" href="#">About</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-['Public_Sans'] text-sm font-semibold text-slate-600 hover:text-teal-500 transition-colors">Sign In</button>
+<button class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-['Public_Sans'] text-sm font-semibold active:opacity-80 active:scale-95 transition-all">Start Free</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="pt-32 pb-24 px-6 text-center">
+<div class="max-w-4xl mx-auto">
+<div class="flex justify-center mb-6">
+<div class="h-1 w-12 bg-primary"></div>
+</div>
+<h1 class="clash-display text-5xl md:text-7xl text-on-surface mb-8 leading-none">
+          Built by a founder<br/>who needed it.
+        </h1>
+<p class="text-outline text-lg md:text-xl max-w-2xl mx-auto satoshi">
+          Wagora was born out of the frustration of fragmented sales cycles and the desire for autonomous precision in business growth.
+        </p>
+</div>
+</section>
+<!-- Visual Divider -->
+<section class="max-w-7xl mx-auto px-12 mb-32">
+<div class="relative aspect-[21/9] w-full overflow-hidden rounded-xl border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="minimalist architecture of a modern bright office with clean lines, large windows, and precise geometry in soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSIAEMcYylCJ1jcq5XIcklgmAJWjrBRZszlE0BV6965TIYW_tZdGM4OxjRrc1X0RAXks7avzSWHyXLmzM_uPDOa-EIxH28mmmKvhDk92-oXYumj5lE3fhA8dwQjuC0Kcp-pleM3NW9hBFS0Rf-lWEezSH9L02MAcI0sX3gqmvQusaRTD0R4veVxiOSbZKywP5gEWmHXCTdhkGIigSctfaf3HPHjq4qzFcix25tiKmzsTswzNrZVlXervVJIa01Yu68r3cfAdshtCM"/>
+<div class="absolute inset-0 bg-primary/5 mix-blend-multiply"></div>
+</div>
+</section>
+<!-- Editorial Column -->
+<section class="max-w-[680px] mx-auto px-6 mb-32">
+<div class="space-y-8 satoshi text-on-surface-variant leading-relaxed text-lg">
+<p>
+          In the pursuit of scale, we often sacrifice the very thing that makes business human: intentionality. Most platforms focus on volume—more leads, more emails, more noise. We found ourselves drowning in tools that promised efficiency but delivered complexity.
+        </p>
+<p>
+          Wagora was engineered to be the antidote. It is a system built on the philosophy of **Autonomous Precision**. We believe that technology should act as a silent, high-performance engine, allowing founders and business leaders to focus on high-leverage decision making while the mechanics of growth operate with architectural rigidity.
+        </p>
+<!-- Pull Quote -->
+<blockquote class="my-16 pl-8 border-l-4 border-primary">
+<p class="clash-display text-3xl md:text-4xl text-on-surface leading-tight">
+            The future of business development isn't found in more activity, but in higher fidelity.
+          </p>
+</blockquote>
+<p>
+          Every line of code and every design choice in Wagora reflects this commitment to quality over quantity. We don't just automate tasks; we elevate the standard of execution. Our goal is to provide a platform that feels less like a software subscription and more like a premium industrial tool—reliable, permanent, and essential.
+        </p>
+<p>
+          Today, Wagora supports hundreds of growing enterprises who refuse to settle for "good enough" automation. We are building the infrastructure for the next generation of precision-led businesses.
+        </p>
+</div>
+<!-- Credit Link -->
+<div class="mt-20 pt-12 border-t border-outline-variant flex flex-col items-start gap-2">
+<span class="text-xs font-bold uppercase tracking-widest text-outline">Engineered By</span>
+<a class="group flex items-center gap-2" href="#">
+<span class="clash-display text-xl text-on-surface group-hover:text-primary transition-colors">Fortex Forge</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</section>
+<!-- Secondary Visual -->
+<section class="max-w-7xl mx-auto px-12 mb-32 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="p-12 bg-surface-container rounded-lg border border-outline-variant">
+<h3 class="clash-display text-2xl mb-4">Tactile Control</h3>
+<p class="satoshi text-on-surface-variant">Designed with a paper-like quality that brings physical permanence to digital workflows.</p>
+</div>
+<div class="p-12 bg-surface-container-highest rounded-lg border border-outline-variant">
+<h3 class="clash-display text-2xl mb-4">Architectural Rigidity</h3>
+<p class="satoshi text-on-surface-variant">Built on a foundation of fixed grids and tonal layers for absolute reliability.</p>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="w-full bg-slate-50 border-t border-slate-200">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-12 py-16">
+<div class="col-span-2 md:col-span-1">
+<span class="font-['Public_Sans'] text-lg font-bold text-slate-900">WAGORA</span>
+<p class="mt-4 font-['Public_Sans'] text-sm text-slate-500 leading-relaxed">
+          The premium standard for autonomous business development.
+        </p>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 text-sm">Product</h4>
+<ul class="space-y-2">
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Solutions</a></li>
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Pricing</a></li>
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Documentation</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 text-sm">Company</h4>
+<ul class="space-y-2">
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">About</a></li>
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Careers</a></li>
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Support</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 mb-4 text-sm">Legal</h4>
+<ul class="space-y-2">
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-['Public_Sans'] text-sm text-slate-500 hover:text-teal-500 transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-slate-200">
+<p class="font-['Public_Sans'] text-sm text-slate-500">
+        © 2024 Wagora. Built by Fortex Forge.
+      </p>
+</div>
+</footer>
+</body></html>
