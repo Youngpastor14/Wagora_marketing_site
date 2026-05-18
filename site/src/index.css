@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   WAGORA DESIGN SYSTEM — "Autonomous Precision"
+   ============================================ */
+
+:root {
+  /* --- Light Mode (Default) --- */
+  --color-primary: #006c4f;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #00c896;
+  --color-on-primary-container: #004d38;
+  --color-secondary: #596400;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #d5ec37;
+  --color-on-secondary-container: #5d6900;
+  --color-tertiary: #9a451f;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #ff9467;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-surface: #f3fbf5;
+  --color-on-surface: #161d1a;
+  --color-surface-dim: #d4dcd6;
+  --color-surface-bright: #f3fbf5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #eef6ef;
+  --color-surface-container: #e8f0e9;
+  --color-surface-container-high: #e2eae4;
+  --color-surface-container-highest: #dce4de;
+  --color-on-surface-variant: #3c4a43;
+  --color-outline: #6c7a72;
+  --color-outline-variant: #bbcac1;
+  --color-inverse-surface: #2a322e;
+  --color-inverse-on-surface: #ebf3ec;
+  --color-inverse-primary: #3adfab;
+  --color-background: #f3fbf5;
+  --color-on-background: #161d1a;
+  --color-primary-fixed: #60fcc6;
+  --color-primary-fixed-dim: #3adfab;
+  --color-surface-tint: #006c4f;
+}
+
+.dark {
+  --color-primary: #3adfab;
+  --color-on-primary: #003828;
+  --color-primary-container: #00c896;
+  --color-on-primary-container: #004d38;
+  --color-secondary: #bcd215;
+  --color-on-secondary: #2d3300;
+  --color-secondary-container: #d5ec37;
+  --color-on-secondary-container: #191e00;
+  --color-tertiary: #ffb598;
+  --color-on-tertiary: #561f00;
+  --color-tertiary-container: #7b2f09;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  --color-error-container: #93000a;
+  --color-surface: #0e1512;
+  --color-on-surface: #ebf3ec;
+  --color-surface-dim: #0e1512;
+  --color-surface-bright: #343b37;
+  --color-surface-container-lowest: #090f0c;
+  --color-surface-container-low: #161d1a;
+  --color-surface-container: #1a211e;
+  --color-surface-container-high: #242b27;
+  --color-surface-container-highest: #2f3733;
+  --color-on-surface-variant: #bbcac1;
+  --color-outline: #8a938e;
+  --color-outline-variant: #3c4a43;
+  --color-inverse-surface: #dce4de;
+  --color-inverse-on-surface: #161d1a;
+  --color-inverse-primary: #006c4f;
+  --color-background: #0e1512;
+  --color-on-background: #ebf3ec;
+  --color-primary-fixed: #60fcc6;
+  --color-primary-fixed-dim: #3adfab;
+  --color-surface-tint: #3adfab;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Satoshi', 'Inter', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+/* Film grain texture (4% opacity) */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Scroll reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-container); }
+::-webkit-scrollbar-thumb { background: var(--color-outline); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary); }
