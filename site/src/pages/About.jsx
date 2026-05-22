@@ -20,13 +20,13 @@ export default function About() {
       </section>
 
       {/* ===== THE ORIGIN STORY ===== */}
-      <section className="max-w-3xl mx-auto px-6 pb-20">
-        <div className="space-y-6 font-satoshi text-on-surface-variant text-base md:text-lg leading-relaxed reveal">
+      <section className="max-w-5xl mx-auto px-6 pb-20 grid md:grid-cols-2 gap-8 items-center reveal">
+        <div className="space-y-6 font-satoshi text-on-surface-variant text-base md:text-lg leading-relaxed">
           <p>
             It started at <strong className="text-on-surface">Fortex Forge</strong>, our creative tech agency. We were doing great work. Clients loved what we delivered. But finding the <em>next</em> client? That was a different story.
           </p>
           <p>
-            Every morning started the same way: scroll LinkedIn, write personalized DMs, track who replied, follow up with the ones who didn't, try to remember what we said to whom, and somehow find time to actually <em>do the work we were selling</em>.
+            Every morning started the same way: scroll LinkedIn, write personalized DMs, track who replied, follow up with the ones who didn't, try to remember what we said to whom, and somehow find time to actually <em>do</em> the work we were selling.
           </p>
           <p>
             We tried the tools everyone recommends. Lead scrapers that gave us spreadsheets of strangers. Email blasters that got us flagged as spam. CRMs that needed a full-time admin to maintain. None of them did the actual hard part: <strong className="text-on-surface">having the conversation</strong>.
@@ -34,6 +34,9 @@ export default function About() {
           <p>
             So we built our own.
           </p>
+        </div>
+        <div className="flex justify-center">
+          <img src="/assets/about/origin_story.png" alt="Founder at desk" className="rounded-lg shadow-md max-w-full h-auto" />
         </div>
       </section>
 
