@@ -39,6 +39,17 @@ export default function About() {
           <img src="/assets/about/origin_story.png" alt="Founder at desk" className="rounded-lg shadow-md max-w-full h-auto" />
         </div>
       </section>
+      {/* ===== VIDEO SHOWCASE ===== */}
+      <section className="max-w-4xl mx-auto px-6 pb-20 reveal">
+        <video
+          src="/assets/about/aboutvd.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full rounded-lg shadow-md"
+        />
+      </section>
 
       {/* ===== PULL QUOTE ===== */}
       <section className="max-w-4xl mx-auto px-6 pb-20 reveal">
@@ -74,23 +85,34 @@ export default function About() {
               {
                 icon: 'storefront',
                 title: 'Agency owners',
+                img: '/assets/about/card_agency_owners.png',
+                imgAlt: 'Nigerian agency team in a brief',
                 body: "You deliver incredible work, but your pipeline depends on referrals and random luck. You need consistent lead flow without hiring a sales team.",
               },
               {
                 icon: 'person',
                 title: 'Solo founders',
+                img: '/assets/about/card_solo_founder.png',
+                imgAlt: 'Solo founder working alone on a laptop',
                 body: "You're the product, the operator, and the salesperson. Something has to give. Wagora takes sales off your plate so you can focus on what you're actually good at.",
               },
               {
                 icon: 'rocket_launch',
                 title: 'Growing teams',
+                img: '/assets/about/card_growing_teams.png',
+                imgAlt: 'Busy collaborative workspace',
                 body: "You've found product-market fit but can't scale outreach fast enough. Wagora gives you the outbound muscle of a 5-person sales team at a fraction of the cost.",
               },
             ].map((card) => (
-              <div key={card.title} className="p-8 md:p-10 rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary/40 transition-colors">
-                <span className="material-symbols-outlined text-primary text-3xl mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>{card.icon}</span>
-                <h3 className="font-clash text-xl font-bold text-on-surface mb-3">{card.title}</h3>
-                <p className="font-satoshi text-sm text-on-surface-variant leading-relaxed">{card.body}</p>
+              <div key={card.title} className="rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary/40 transition-colors overflow-hidden">
+                <div className="h-40 overflow-hidden">
+                  <img src={card.img} alt={card.imgAlt} className="w-full h-full object-cover" />
+                </div>
+                <div className="p-8 md:p-10">
+                  <span className="material-symbols-outlined text-primary text-3xl mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>{card.icon}</span>
+                  <h3 className="font-clash text-xl font-bold text-on-surface mb-3">{card.title}</h3>
+                  <p className="font-satoshi text-sm text-on-surface-variant leading-relaxed">{card.body}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -156,9 +178,9 @@ export default function About() {
               If you're tired of choosing between doing great work and finding new clients, Wagora was made for exactly that moment.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/auth" className="bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
+              <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
                 Start For Free
-              </Link>
+              </a>
               <Link to="/how-it-works" className="border border-on-primary/30 text-on-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:bg-on-primary/10 transition-all">
                 See How It Works
               </Link>
