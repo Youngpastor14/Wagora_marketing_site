@@ -51,17 +51,17 @@ export default function Home() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="relative pt-16 md:pt-24 pb-16 md:pb-20 px-6 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--color-primary)_0%,transparent_70%)] opacity-[0.04]" />
+      <section className="relative pt-16 md:pt-24 pb-0 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--color-primary)_0%,transparent_60%)] opacity-[0.05]" />
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="font-geist-mono text-xs font-bold tracking-[0.2em] text-primary uppercase mb-4 block">YOUR AUTONOMOUS AI SALES AGENT</span>
           <h1 className="font-clash text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.08] tracking-tight text-on-surface mb-6">
             Your next client is already online. Wagora will go get them.
           </h1>
           <p className="font-satoshi text-base md:text-lg text-on-surface-variant max-w-2xl mx-auto mb-8 leading-relaxed">
-            Wagora finds your ideal clients, sends personalized outreach, handles every reply, and closes the deal, while you focus on delivering great work.
+            Wagora finds your ideal clients, sends personalized outreach, handles every reply, and closes the deal — while you focus on delivering great work.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-6">
             <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="bg-primary text-on-primary px-8 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
               Start For Free
             </a>
@@ -69,7 +69,155 @@ export default function Home() {
               See how it works <span className="material-symbols-outlined text-lg">arrow_forward</span>
             </Link>
           </div>
-          <p className="font-geist-mono text-[11px] uppercase tracking-widest text-outline">Trusted by agencies and founders across 10+ industries</p>
+          <p className="font-geist-mono text-[11px] uppercase tracking-widest text-outline mb-10">Trusted by agencies and founders across 10+ industries</p>
+        </div>
+
+        {/* ===== HERO DASHBOARD MOCKUP ===== */}
+        <div className="relative max-w-5xl mx-auto z-10 px-0 md:px-6">
+          {/* Floating notification */}
+          <div className="hero-notify absolute -top-4 right-4 md:right-16 z-20 flex items-center gap-2.5 bg-surface-container-lowest border border-primary/30 rounded-xl px-3.5 py-2.5 shadow-lg shadow-primary/10">
+            <div className="relative shrink-0">
+              <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-primary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+              </div>
+              <span className="hero-ring absolute inset-0 rounded-full border border-primary/40" />
+            </div>
+            <div>
+              <p className="font-satoshi text-xs font-bold text-on-surface leading-none mb-0.5">Deal Closed · $3,200/mo</p>
+              <p className="font-geist-mono text-[10px] text-primary">Wagora just closed Marcus Reid</p>
+            </div>
+          </div>
+
+          {/* Dashboard shell */}
+          <div className="rounded-t-2xl overflow-hidden border border-outline-variant/50 border-b-0 bg-surface-container-lowest shadow-2xl shadow-primary/5">
+            {/* Top bar */}
+            <div className="flex items-center gap-2 px-4 py-3 bg-surface-container border-b border-outline-variant/40">
+              <div className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-outline-variant/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-outline-variant/60" />
+                <span className="w-2.5 h-2.5 rounded-full bg-outline-variant/60" />
+              </div>
+              <div className="flex-1 flex justify-center">
+                <div className="flex items-center gap-2 px-3 py-1 rounded-md bg-surface-container-high border border-outline-variant/40 w-48">
+                  <span className="material-symbols-outlined text-outline text-xs">lock</span>
+                  <span className="font-geist-mono text-[10px] text-on-surface-variant">app.getwagora.com</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 rounded-md bg-primary flex items-center justify-center">
+                  <span className="font-clash text-on-primary text-[10px] font-bold">W</span>
+                </div>
+                <span className="font-clash text-xs font-bold text-on-surface hidden sm:block">Wagora</span>
+              </div>
+            </div>
+
+            {/* Dashboard body */}
+            <div className="flex min-h-[340px] md:min-h-[400px]">
+              {/* Sidebar */}
+              <div className="hidden sm:flex flex-col w-44 shrink-0 border-r border-outline-variant/40 bg-surface-container-low p-3 gap-1">
+                {[
+                  { icon: 'dashboard', label: 'Dashboard', active: true },
+                  { icon: 'campaign', label: 'Campaigns', active: false },
+                  { icon: 'group', label: 'Prospects', active: false },
+                  { icon: 'chat', label: 'Conversations', active: false },
+                  { icon: 'analytics', label: 'Analytics', active: false },
+                ].map(item => (
+                  <div key={item.label} className={`flex items-center gap-2 px-3 py-2 rounded-lg cursor-default ${item.active ? 'bg-primary/10 text-primary' : 'text-on-surface-variant'}`}>
+                    <span className="material-symbols-outlined text-base" style={{ fontVariationSettings: item.active ? "'FILL' 1" : "'FILL' 0" }}>{item.icon}</span>
+                    <span className="font-satoshi text-xs font-semibold">{item.label}</span>
+                  </div>
+                ))}
+                <div className="mt-auto pt-3 border-t border-outline-variant/30">
+                  <div className="flex items-center gap-2 px-2 py-1.5">
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                      <span className="font-clash text-[10px] font-bold text-primary">A</span>
+                    </div>
+                    <div>
+                      <div className="font-satoshi text-[10px] font-bold text-on-surface">Agency Co.</div>
+                      <div className="font-geist-mono text-[8px] text-primary">● Active</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main content */}
+              <div className="flex-1 p-4 md:p-6 overflow-hidden">
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-3 mb-5">
+                  {[
+                    { label: 'Prospects Found', value: '247', trend: '+12 today', icon: 'person_search' },
+                    { label: 'Messages Sent', value: '89', trend: 'Last 24h', icon: 'send' },
+                    { label: 'Deals Closed', value: '3', trend: 'This week', icon: 'handshake' },
+                  ].map(stat => (
+                    <div key={stat.label} className="p-3 rounded-lg bg-surface-container border border-outline-variant/40">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="font-geist-mono text-[9px] uppercase tracking-wider text-outline">{stat.label}</span>
+                        <span className="material-symbols-outlined text-primary text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>{stat.icon}</span>
+                      </div>
+                      <div className="font-clash text-xl md:text-2xl font-bold text-on-surface">{stat.value}</div>
+                      <div className="font-geist-mono text-[9px] text-primary mt-0.5">{stat.trend}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Campaign progress */}
+                <div className="p-3 rounded-lg bg-surface-container border border-outline-variant/40 mb-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div>
+                      <span className="font-satoshi text-xs font-bold text-on-surface">SaaS Founders · Q3 Outreach</span>
+                      <span className="ml-2 px-1.5 py-0.5 rounded-full bg-primary/10 font-geist-mono text-[9px] text-primary font-bold">LIVE</span>
+                    </div>
+                    <span className="font-geist-mono text-[10px] text-on-surface-variant">68%</span>
+                  </div>
+                  <div className="w-full h-1.5 rounded-full bg-surface-container-high overflow-hidden">
+                    <div className="hero-progress h-full rounded-full bg-primary" style={{ width: '0%' }} />
+                  </div>
+                </div>
+
+                {/* Prospect list */}
+                <div className="space-y-2">
+                  {[
+                    { name: 'Sarah Chen', role: 'CEO · NovaTech', status: 'Replied', score: 95 },
+                    { name: 'Marcus Reid', role: 'Founder · Gridline', status: 'Closed', score: 92 },
+                    { name: 'Priya Sharma', role: 'CMO · BrightPath', status: 'Outreach sent', score: 87 },
+                  ].map((p, i) => (
+                    <div key={p.name} className="flex items-center gap-3 p-2.5 rounded-lg border border-outline-variant/40 bg-surface-container-lowest">
+                      <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                        <span className="font-clash text-[11px] font-bold text-primary">{p.name[0]}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="font-satoshi text-xs font-bold text-on-surface truncate">{p.name}</div>
+                        <div className="font-satoshi text-[10px] text-on-surface-variant truncate">{p.role}</div>
+                      </div>
+                      <div className={`shrink-0 px-2 py-0.5 rounded-full font-geist-mono text-[9px] font-bold ${
+                        p.status === 'Closed'        ? 'bg-primary/15 text-primary' :
+                        p.status === 'Replied'       ? 'bg-secondary-container/60 text-on-secondary-container' :
+                                                       'bg-surface-container text-outline'
+                      }`}>{p.status}</div>
+                      <div className="shrink-0 font-geist-mono text-[10px] text-on-surface-variant w-8 text-right">{p.score}%</div>
+                    </div>
+                  ))}
+                  {/* Typing row */}
+                  <div className="flex items-center gap-3 p-2.5 rounded-lg border border-primary/20 bg-primary/3">
+                    <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <span className="font-clash text-[11px] font-bold text-primary">J</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="font-satoshi text-xs font-bold text-on-surface">James Okafor</div>
+                      <div className="flex items-center gap-1 font-satoshi text-[10px] text-primary">
+                        <span>Wagora is composing a reply</span>
+                        <span className="hero-cursor font-bold">|</span>
+                      </div>
+                    </div>
+                    <div className="shrink-0 w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Fade-out gradient at bottom to merge with next section */}
+          <div className="h-24 bg-gradient-to-b from-transparent to-surface-container-low" />
         </div>
       </section>
 
