@@ -8,6 +8,11 @@ import HowItWorks from './pages/HowItWorks'
 import Pricing from './pages/Pricing'
 import About from './pages/About'
 import Auth from './pages/Auth'
+import PrivacyPolicy from './pages/legal/PrivacyPolicy'
+import TermsOfService from './pages/legal/TermsOfService'
+import CookiePolicy from './pages/legal/CookiePolicy'
+import AcceptableUsePolicy from './pages/legal/AcceptableUsePolicy'
+import RefundPolicy from './pages/legal/RefundPolicy'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -33,6 +38,11 @@ export default function App() {
                   <Route path="/how-it-works" element={<HowItWorks />} />
                   <Route path="/pricing" element={<Pricing />} />
                   <Route path="/about" element={<About />} />
+                  <Route path="/legal/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/legal/terms" element={<TermsOfService />} />
+                  <Route path="/legal/cookies" element={<CookiePolicy />} />
+                  <Route path="/legal/acceptable-use" element={<AcceptableUsePolicy />} />
+                  <Route path="/legal/refunds" element={<RefundPolicy />} />
                 </Routes>
               </main>
               <Footer />
