@@ -36,7 +36,13 @@ export default function About() {
           </p>
         </div>
         <div className="flex justify-center">
-          <img src="/assets/about/origin_story.png" alt="Founder at desk" className="rounded-lg shadow-md max-w-full h-auto" />
+          <img
+            src="/assets/about/origin_story.png"
+            alt="Founder at desk deep in thought"
+            loading="lazy"
+            decoding="async"
+            className="rounded-lg shadow-md max-w-full h-auto"
+          />
         </div>
       </section>
       {/* ===== VIDEO SHOWCASE ===== */}
@@ -106,7 +112,13 @@ export default function About() {
             ].map((card) => (
               <div key={card.title} className="rounded-xl bg-surface-container-lowest border border-outline-variant/60 hover:border-primary/40 transition-colors overflow-hidden">
                 <div className="h-40 overflow-hidden">
-                  <img src={card.img} alt={card.imgAlt} className="w-full h-full object-cover" />
+                  <img
+                    src={card.img}
+                    alt={card.imgAlt}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-8 md:p-10">
                   <span className="material-symbols-outlined text-primary text-3xl mb-4 block" style={{ fontVariationSettings: "'FILL' 1" }}>{card.icon}</span>
@@ -178,8 +190,8 @@ export default function About() {
               If you're tired of choosing between doing great work and finding new clients, Wagora was made for exactly that moment.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
-                Start For Free
+              <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="inline-flex items-center gap-2 bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
+                Start Free <span className="material-symbols-outlined text-base">arrow_forward</span>
               </a>
               <Link to="/how-it-works" className="border border-on-primary/30 text-on-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:bg-on-primary/10 transition-all">
                 See How It Works

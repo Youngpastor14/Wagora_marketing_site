@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { ThemeProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import StickyCTA from './components/StickyCTA'
 import Home from './pages/Home'
 import HowItWorks from './pages/HowItWorks'
 import Pricing from './pages/Pricing'
@@ -20,6 +21,15 @@ function ScrollToTop() {
   return null
 }
 
+function PageWrapper({ children }) {
+  const { pathname } = useLocation()
+  return (
+    <div key={pathname} className="page-transition">
+      {children}
+    </div>
+  )
+}
+
 export default function App() {
   return (
     <ThemeProvider>
@@ -32,18 +42,21 @@ export default function App() {
           element={
             <>
               <Navbar />
+              <StickyCTA />
               <main>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/how-it-works" element={<HowItWorks />} />
-                  <Route path="/pricing" element={<Pricing />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/legal/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/legal/terms" element={<TermsOfService />} />
-                  <Route path="/legal/cookies" element={<CookiePolicy />} />
-                  <Route path="/legal/acceptable-use" element={<AcceptableUsePolicy />} />
-                  <Route path="/legal/refunds" element={<RefundPolicy />} />
-                </Routes>
+                <PageWrapper>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/how-it-works" element={<HowItWorks />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/legal/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/legal/terms" element={<TermsOfService />} />
+                    <Route path="/legal/cookies" element={<CookiePolicy />} />
+                    <Route path="/legal/acceptable-use" element={<AcceptableUsePolicy />} />
+                    <Route path="/legal/refunds" element={<RefundPolicy />} />
+                  </Routes>
+                </PageWrapper>
               </main>
               <Footer />
             </>
@@ -53,3 +66,4 @@ export default function App() {
     </ThemeProvider>
   )
 }
+
