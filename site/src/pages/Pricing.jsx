@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const plans = [
-  { name: 'Free', price: '$0', period: '/mo', desc: 'For founders testing the waters.', features: ['50 prospects / month', 'Email outreach only', '100 AI conversations', 'Basic analytics', '1 active campaign'], cta: 'Start Free' },
-  { name: 'Starter', price: '$23', period: '/mo', desc: 'For growing agencies ready to build pipeline.', badge: 'Most Popular', features: ['300 prospects / month', 'Email + LinkedIn outreach', 'Unlimited AI conversations', 'Full analytics dashboard', '3 active campaigns', 'Priority support'], cta: 'Get Started' },
+  { name: 'Free', price: '$0', period: '/mo', desc: 'For founders testing the waters.', features: ['20 emails per day', 'Email outreach only', '100 AI conversations', 'Basic analytics', '1 active campaign'], cta: 'Start Free' },
+  { name: 'Starter', price: '$23', period: '/mo', desc: 'For growing agencies ready to build pipeline.', badge: 'Most Popular', features: ['50 emails per day', 'Email + LinkedIn outreach', 'Unlimited AI conversations', 'Full analytics dashboard', '3 active campaigns', 'Priority support'], cta: 'Get Started' },
   { name: 'Growth', price: '$49', period: '/mo', desc: 'For serious outbound operations.', features: ['1,000 prospects / month', 'All platforms (Email, LinkedIn, IG)', 'Unlimited AI conversations', 'Advanced analytics + optimization', '10 active campaigns', 'Voice calling (when live)'], cta: 'Get Started' },
-  { name: 'Agency', price: '$86', period: '/mo', desc: 'For studios managing multiple brands.', badge: 'Full Power', features: ['Unlimited prospects', 'All platforms', 'Unlimited conversations', 'Multi-workspace support', 'White-label ready', 'Dedicated support'], cta: 'Get Started' },
+  { name: 'Agency', price: 'Coming Soon', period: '', desc: 'For studios managing multiple brands.', badge: 'Full Power', comingSoon: true, features: ['Unlimited prospects', 'All platforms', 'Unlimited conversations', 'Multi-workspace support', 'White-label ready', 'Dedicated support'], cta: 'Join Waitlist' },
 ]
 
 const comparison = [
@@ -39,16 +39,29 @@ export default function Pricing() {
       <section className="max-w-7xl mx-auto px-6 md:px-12 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {plans.map((p, i) => {
           const isSelected = selectedPlan === i
+          const isComingSoon = !!p.comingSoon
           return (
             <div
               key={i}
-              onClick={() => setSelectedPlan(i)}
-              className={`p-8 flex flex-col rounded-lg relative cursor-pointer transition-all duration-200 ${isSelected ? 'border-2 border-primary bg-surface-container-lowest scale-[1.02] shadow-lg shadow-primary/5' : 'border border-outline-variant/60 bg-surface-container-lowest hover:border-primary/40'}`}
+              onClick={() => !isComingSoon && setSelectedPlan(i)}
+              className={`p-8 flex flex-col rounded-lg relative transition-all duration-200 ${
+                isComingSoon
+                  ? 'border border-outline-variant/40 bg-surface-container opacity-80 cursor-default'
+                  : isSelected
+                  ? 'border-2 border-primary bg-surface-container-lowest scale-[1.02] shadow-lg shadow-primary/5 cursor-pointer'
+                  : 'border border-outline-variant/60 bg-surface-container-lowest hover:border-primary/40 cursor-pointer'
+              }`}
             >
-              {p.badge && <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-full whitespace-nowrap ${isSelected ? 'bg-primary text-on-primary' : 'bg-secondary-container text-on-secondary-container'}`}>{p.badge}</div>}
+              {p.badge && <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-full whitespace-nowrap ${
+                isComingSoon ? 'bg-outline text-surface' : isSelected ? 'bg-primary text-on-primary' : 'bg-secondary-container text-on-secondary-container'
+              }`}>{p.badge}</div>}
               <div className="mb-6">
                 <span className="font-geist-mono text-xs font-bold uppercase tracking-widest text-outline">{p.name}</span>
-                <h3 className="font-clash text-4xl font-bold text-on-surface mt-1">{p.price}<span className="text-base font-normal text-outline">{p.period}</span></h3>
+                <h3 className={`font-clash font-bold text-on-surface mt-1 ${
+                  isComingSoon ? 'text-2xl' : 'text-4xl'
+                }`}>
+                  {p.price}<span className="text-base font-normal text-outline">{p.period}</span>
+                </h3>
               </div>
               <p className="font-satoshi text-sm text-on-surface-variant mb-6">{p.desc}</p>
               <ul className="text-sm space-y-3 mb-8 flex-grow">
@@ -58,9 +71,20 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Link to="/auth" className={`w-full py-3 rounded-lg font-satoshi font-bold text-sm text-center block transition-all active:scale-[0.97] ${isSelected ? 'bg-primary text-on-primary hover:opacity-90' : 'border border-outline text-on-surface hover:bg-surface-container'}`}>
-                {p.cta}
-              </Link>
+              {isComingSoon ? (
+                <div className="w-full py-3 rounded-lg font-satoshi font-bold text-sm text-center border border-outline-variant/60 text-outline-variant cursor-default">
+                  Coming Soon
+                </div>
+              ) : (
+                <a
+                  href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup?plan=${['free', 'pro', 'growth', 'agency'][i]}`}
+                  className={`w-full py-3 rounded-lg font-satoshi font-bold text-sm text-center block transition-all active:scale-[0.97] ${
+                    isSelected ? 'bg-primary text-on-primary hover:opacity-90' : 'border border-outline text-on-surface hover:bg-surface-container'
+                  }`}
+                >
+                  {p.cta}
+                </a>
+              )}
             </div>
           )
         })}
@@ -107,9 +131,9 @@ export default function Pricing() {
             <p className="font-satoshi text-on-surface-variant leading-relaxed">The free plan is genuinely useful. 50 prospects, real AI conversations, real outreach. No credit card. No time limit.</p>
           </div>
           <div className="relative z-10 shrink-0">
-            <Link to="/auth" className="bg-primary text-on-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
+            <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="bg-primary text-on-primary px-10 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
               Start Free →
-            </Link>
+            </a>
           </div>
         </div>
       </section>

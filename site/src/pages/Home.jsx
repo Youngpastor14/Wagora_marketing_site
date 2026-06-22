@@ -25,10 +25,10 @@ const faqs = [
 ]
 
 const plans = [
-  { name: 'Free', price: '$0', period: '/mo', desc: 'For founders testing the waters.', features: ['50 prospects per month', 'Email outreach only', '100 AI conversations', 'Basic analytics', '1 active campaign'], cta: 'Start Free' },
-  { name: 'Starter', price: '$23', period: '/mo', desc: 'For growing agencies ready to build pipeline.', badge: 'Most Popular', features: ['300 prospects per month', 'Email + LinkedIn outreach', 'Unlimited AI conversations', 'Full analytics dashboard', '3 active campaigns', 'Priority support'], cta: 'Get Started' },
+  { name: 'Free', price: '$0', period: '/mo', desc: 'For founders testing the waters.', features: ['20 emails per day', 'Email outreach only', '100 AI conversations', 'Basic analytics', '1 active campaign'], cta: 'Start Free' },
+  { name: 'Starter', price: '$23', period: '/mo', desc: 'For growing agencies ready to build pipeline.', badge: 'Most Popular', features: ['50 emails per day', 'Email + LinkedIn outreach', 'Unlimited AI conversations', 'Full analytics dashboard', '3 active campaigns', 'Priority support'], cta: 'Get Started' },
   { name: 'Growth', price: '$49', period: '/mo', desc: 'For agencies running serious outbound operations.', features: ['1,000 prospects per month', 'All platforms', 'Unlimited AI conversations', 'Advanced analytics', '10 active campaigns', 'Voice calling (when live)'], cta: 'Get Started' },
-  { name: 'Agency', price: '$86', period: '/mo', desc: 'For studios managing multiple brands.', badge: 'Full Power', features: ['Unlimited prospects', 'All platforms', 'Unlimited conversations', 'Multi-workspace support', 'White-label ready', 'Dedicated support'], cta: 'Get Started' },
+  { name: 'Agency', price: 'Coming Soon', period: '', desc: 'For studios managing multiple brands.', badge: 'Full Power', features: ['Unlimited prospects', 'All platforms', 'Unlimited conversations', 'Multi-workspace support', 'White-label ready', 'Dedicated support'], cta: 'Join Waitlist' },
 ]
 
 function FAQ({ q, a }) {
@@ -62,9 +62,9 @@ export default function Home() {
             Wagora finds your ideal clients, sends personalized outreach, handles every reply, and closes the deal, while you focus on delivering great work.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 mb-8">
-            <Link to="/auth" className="bg-primary text-on-primary px-8 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
+            <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="bg-primary text-on-primary px-8 py-4 rounded-lg font-satoshi font-bold text-base hover:opacity-90 active:scale-[0.97] transition-all">
               Start For Free
-            </Link>
+            </a>
             <Link to="/how-it-works" className="border border-outline text-on-surface px-8 py-4 rounded-lg font-satoshi font-bold text-base hover:bg-surface-container transition-all flex items-center justify-center gap-2">
               See how it works <span className="material-symbols-outlined text-lg">arrow_forward</span>
             </Link>
@@ -212,9 +212,9 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <Link to="/auth" className={`w-full py-3 rounded-lg font-satoshi font-bold text-sm text-center block transition-all active:scale-[0.97] ${isSelected ? 'bg-primary text-on-primary hover:opacity-90' : 'border border-outline text-on-surface hover:bg-surface-container'}`}>
+                  <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup?plan=${['free', 'pro', 'growth', 'agency'][i]}`} className={`w-full py-3 rounded-lg font-satoshi font-bold text-sm text-center block transition-all active:scale-[0.97] ${isSelected ? 'bg-primary text-on-primary hover:opacity-90' : 'border border-outline text-on-surface hover:bg-surface-container'}`}>
                     {p.cta}
-                  </Link>
+                  </a>
                 </div>
               )
             })}
@@ -242,11 +242,11 @@ export default function Home() {
             <p className="font-satoshi text-on-primary/80 max-w-xl mx-auto mb-10 text-base md:text-lg">
               Wagora runs it whether you're in a client meeting, on a flight, or asleep. Consistent outreach. Real conversations. Closed deals.
             </p>
-            <Link to="/auth" className="inline-block bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-sm md:text-base tracking-wide hover:opacity-90 active:scale-[0.97] transition-all">
+            <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`} className="inline-block bg-on-primary text-primary px-10 py-4 rounded-lg font-satoshi font-bold text-sm md:text-base tracking-wide hover:opacity-90 active:scale-[0.97] transition-all">
               Start For Free. No Credit Card Required.
-            </Link>
+            </a>
             <p className="mt-6 font-satoshi text-sm text-on-primary/60">
-              Already have an account? <Link to="/auth" className="text-on-primary/90 underline">Sign in →</Link>
+              Already have an account? <a href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signin`} className="text-on-primary/90 underline">Sign in →</a>
             </p>
           </div>
         </div>

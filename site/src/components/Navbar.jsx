@@ -51,19 +51,19 @@ export default function Navbar() {
             </span>
           </button>
 
-          <Link
-            to="/auth"
+          <a
+            href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signin`}
             className="hidden sm:block font-satoshi text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors"
           >
             Sign In
-          </Link>
+          </a>
 
-          <Link
-            to="/auth"
+          <a
+            href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`}
             className="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-satoshi text-sm font-bold hover:opacity-90 active:scale-95 transition-all"
           >
             Start Free
-          </Link>
+          </a>
 
           {/* Mobile Hamburger */}
           <button
@@ -80,7 +80,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-outline-variant/40 bg-surface-container-lowest/95 backdrop-blur-xl">
+        <div className="mobile-drawer md:hidden border-t border-outline-variant/40 bg-surface-container-lowest/95 backdrop-blur-xl">
           <div className="flex flex-col px-6 py-4 gap-1">
             {navLinks.map((link) => (
               <Link
@@ -96,13 +96,25 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              to="/auth"
-              onClick={() => setMobileOpen(false)}
-              className="font-satoshi text-sm font-semibold py-3 px-4 rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
+
+            {/* Divider */}
+            <div className="border-t border-outline-variant/30 my-2" />
+
+            {/* Sign In */}
+            <a
+              href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signin`}
+              className="font-satoshi text-sm font-semibold py-3 px-4 rounded-lg text-on-surface-variant border border-outline-variant/60 text-center hover:text-primary hover:border-primary/40 hover:bg-surface-container transition-colors"
             >
               Sign In
-            </Link>
+            </a>
+
+            {/* Start Free — Primary CTA */}
+            <a
+              href={`${import.meta.env.VITE_APP_URL || 'http://localhost:5174'}/auth/signup`}
+              className="bg-primary text-on-primary font-satoshi text-sm font-bold py-3 px-4 rounded-lg text-center hover:opacity-90 active:scale-[0.97] transition-all mt-1"
+            >
+              Start Free
+            </a>
           </div>
         </div>
       )}
