@@ -45,17 +45,6 @@ export default function About() {
           />
         </div>
       </section>
-      {/* ===== VIDEO SHOWCASE ===== */}
-      <section className="max-w-4xl mx-auto px-6 pb-20 reveal">
-        <video
-          src="/assets/about/aboutvd.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full rounded-lg shadow-md"
-        />
-      </section>
 
       {/* ===== PULL QUOTE ===== */}
       <section className="max-w-4xl mx-auto px-6 pb-20 reveal">
